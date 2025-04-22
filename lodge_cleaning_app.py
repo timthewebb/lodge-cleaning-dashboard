@@ -29,8 +29,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 ical_urls = {
-    "Hart Lodge": "https://www.airbnb.com/calendar/ical/684551794093413533.ics?s=e7dffe9e5582072cb8369f36ba013033&locale=en-GB",
-    "Hare Lodge": "https://www.airbnb.com/calendar/ical/647083178501004223.ics?s=b855121c71bc4d263f21d5730d4c6187&locale=en-GB"
+    "Hart Lodge": "https://www.airbnb.co.uk/calendar/ical/647083178501004223.ics?s=b855121c71bc4d263f21d5730d4c6187&locale=en-GB",
+    "Hare Lodge": "https://www.airbnb.co.uk/calendar/ical/684551794093413533.ics?s=e7dffe9e5582072cb8369f36ba013033&locale=en-GB"
 }
 
 notes_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQsWb1eswUEYV57gvhkXJSdctNkcw7R8_MzrAavM-GjaZ87Mc2ICOky8gN-FU13ykrn6XestQrh2kfl/pub?output=csv"
