@@ -106,18 +106,19 @@ for date_ in next_60_days:
         if not co.empty or not ci.empty:
             changeovers.append(f"{lodge}: {' & '.join(filter(None, ['Out' if not co.empty else '', 'In' if not ci.empty else '']))}")
 
-    if co_list == [True, True] and ci_list == [True, True]:
-        rag = "🔴 Turnaround in BOTH lodges!"
+    # Apply logic for flags
+    if co_list.count(True) == 2 and ci_list.count(True) == 2:  # Both lodges have Out & In on the same day
+        rag = "🔴 Turnaround in BOTH lodges!"  # Both lodges have both checkouts and check-ins
+    elif co_list.count(True) > 0 and ci_list.count(True) > 0:  # Out & In happen on the same day across different lodges
+        rag = "🟡 Single Changeover"  # Apply yellow flag if there is any checkout and check-in
     elif co_list == [True, True] and ci_list == [False, False]:
-        rag = "🔶 Double Checkout Only"
-    elif co_list.count(True) == 1 and ci_list.count(True) == 1:
-        rag = "🟡 Single Changeover"
+        rag = "🔶 Double Checkout Only"  # Both lodges are checking out on the same day
     elif co_list.count(True) == 1 and ci_list.count(True) == 0:
-        rag = "🟡 Single Changeover"
+        rag = "🟡 Single Changeover"  # Only one checkout without a check-in
     elif ci_list.count(True) > 0:
-        rag = "🟢 Check-in Only"
+        rag = "🟢 Check-in Only"  # Only check-ins on the day
     else:
-        rag = "🔷 Free"
+        rag = "🔷 Free"  # No changeover or check-in
 
     note_text = ""
     if not notes_df.empty:
